@@ -102,7 +102,7 @@ if uploaded_file or sheet_url:
     #-------------------------
     # Agewise Report
     #-------------------------
-    st.header ("Agewise Report")
+    st.header (" Agewise Report")
     Agewise = df.groupby(['M_AgeGroup ', 'Gender']).size().reset_index(name='Total')
 
     # Create a pivot table to display the data in a more readable format
@@ -172,6 +172,11 @@ if uploaded_file or sheet_url:
     values="Count",
     aggfunc="sum",      # Ensures both male+female counts are summed for the same age group
     fill_value=0)
+
+    #Add TOTAL column (after all age groups)
+    pivot_df[('All Age Groups', 'Total')] = (
+        pivot_df.sum(axis=1)
+    )
 
     st.dataframe(pivot_df)
 
