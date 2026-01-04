@@ -174,7 +174,7 @@ if uploaded_file or sheet_url:
     fill_value=0)
 
     #Add TOTAL column (after all age groups)
-    pivot_df[('All Age Groups', 'Total')] = (
+    pivot_df[('Total')] = (
         pivot_df.sum(axis=1)
     )
 
